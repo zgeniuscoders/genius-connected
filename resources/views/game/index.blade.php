@@ -25,7 +25,21 @@
     <button class="bg-my-indigo px-4 py-2 rounded-lg uppercase">quitter</button>
 </nav>
 
+
 <main class="flex items-center justify-center flex-col h-screen overflow-hidden">
+{{--    select level--}}
+    <section class="flex items-center border border-dark-secondary w-400 mb-6">
+        <article class="p-2  text-gray-100 w-full text-center hover:cursor-pointer hover:bg-my-indigo">
+            <h3 class="text-md uppercase" data-value="easy">Facile</h3>
+        </article>
+        <article class="p-2 bg-my-indigo text-gray-100 w-full text-center hover:cursor-pointer hover:bg-my-indigo">
+            <h3 class="text-md uppercase font-bold" data-value="normal">Normal</h3>
+        </article>
+        <article class="p-2 text-gray-100 w-full text-center hover:cursor-pointer hover:bg-my-indigo">
+            <h3 class="text-md uppercase" data-value="difficult">Difficile</h3>
+        </article>
+    </section>
+
     <button type="button" class="absolute left-0 mx-4" id="btn__carousel__next"><i
             class="fa fa-arrow-left fa-2xl dark:text-gray-100"></i></button>
     <section class="flex gap-4" id="selectedGame">
@@ -36,6 +50,14 @@
                     <i class="fa fa-play text-gray-100"></i>
                 </button>
                 <h5 class="text-gray-100 font-bold text-lg ml-4 uppercase">Tournois</h5>
+            </div>
+        </article>
+        <article class="w-300 h-300 bg-dark-secondary relative" style="transform: skew(-8deg)">
+            <div class="absolute bottom-0 mb-4 mx-4 flex items-center">
+                <button class="w-12 h-12 bg-dark-secondary rounded-full flex items-center justify-center">
+                    <i class="fa fa-play text-gray-100"></i>
+                </button>
+                <h5 class="text-gray-100 font-bold text-lg ml-4 uppercase">Entrainement</h5>
             </div>
         </article>
         <article class="w-300 h-300 bg-dark-secondary relative" style="transform: skew(-8deg)">
@@ -67,42 +89,51 @@
     let selectedGameName = document.querySelector("#selectedGameName")
 
     let index = 0
+
+    function activeSelectedGame(element) {
+        selectedGameBox.forEach(x => {
+            if (element !== x) {
+                x.classList.remove("border-my-indigo")
+                x.classList.remove("border-4")
+            }
+        })
+    }
+
+    function addActiveToSelectedGame(element) {
+        element.classList.add("border-my-indigo")
+        element.classList.add("border-4")
+    }
+
+    function selectedGameNameNav(element) {
+        selectedGameName.textContent = element
+    }
+
+    selectedGameNameNav(selectedGameBox[0].querySelector("h5").textContent)
+
     window.addEventListener("keyup", (e) => {
         if (e.key === "ArrowRight") {
             index++
-            if (index > 2) {
+            if (index > selectedGameBox.length - 1) {
                 index = 0
             }
         } else if (e.key === "ArrowLeft") {
             index--
             if (index < 0) {
-                index = 2
+                index = selectedGameBox.length - 1
             }
         }
-        selectedGameBox.forEach(x => {
-            if (selectedGameBox[index] !== x) {
-                x.classList.remove("border-my-indigo")
-                x.classList.remove("border-4")
-            }
-        })
-        selectedGameBox[index].classList.add("border-my-indigo")
-        selectedGameBox[index].classList.add("border-4")
-        console.log(e, index)
+        activeSelectedGame(selectedGameBox[index])
+        addActiveToSelectedGame(selectedGameBox[index])
+        selectedGameNameNav(selectedGameBox[index].querySelector("h5").textContent)
     })
-
     selectedGameBox.forEach((e) => {
         e.addEventListener("click", (event) => {
-            selectedGameName.textContent = e.querySelector("h5").textContent
-            e.classList.add("border-my-indigo")
-            e.classList.add("border-4")
-            selectedGameBox.forEach(x => {
-                if (e !== x) {
-                    x.classList.remove("border-my-indigo")
-                    x.classList.remove("border-4")
-                }
-            })
+            selectedGameNameNav(e.querySelector("h5").textContent)
+            addActiveToSelectedGame(e)
+            activeSelectedGame(e)
         })
     })
+
 </script>
 </body>
 </html>
