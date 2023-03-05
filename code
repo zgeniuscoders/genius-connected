@@ -1,0 +1,45 @@
+<section class="md:block hidden h-screen bg-dark-secondary py-8 px-4 relative">
+            <h3 class="text-xl font-bold text-my-indigo mb-4">GENIUS CONNECTED</h3>
+            {{--            game info --}}
+            <article class="mb-4">
+                <h2 class="dark:text-gray-100 font-bold mb-2">Information sur les jeux</h2>
+                <h3 class="dark:text-gray-100">Niveau : <span id="game_level">Facile</span></h3>
+                <h3 class="dark:text-gray-100">Rubrique : <span id="game_rubrique">Musics</span></h3>
+                <h3 class="dark:text-gray-100">Question : 5</h3>
+                <h3 class="dark:text-gray-100">Participants : 2</h3>
+            </article>
+            {{--            user info --}}
+            <article>
+                <h2 class="dark:text-gray-100 font-bold mb-2">Vos Information</h2>
+                <h3 class="dark:text-gray-100">Points : <span id="">12</span></h3>
+                <h3 class="dark:text-gray-100">Reussit : <span class="player_correct">4</span></h3>
+                <h3 class="dark:text-gray-100">Echecs : <span id="player_mistakes">2</span></h3>
+                <h3 class="dark:text-gray-100 flex items-center">Questions : <span id="total_que"
+                                                                                   class="flex items-center mx-2">0/0</span>
+                </h3>
+            </article>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+                <a href="" class="block mb-2 bg-red-500 text-gray-100 rounded-md text-center p-2">Quitter</a>
+            </div>
+        </section>
+
+        <main class="h-screen dark:bg-dark p-8">
+
+            <section class="relative dark:bg-dark-secondary w-full rounded-md p-4 flex items-center justify-between">
+                <h1 class="text-gray-100 font-bold md:text-md text-sm" id="que_text">Quelle est la capitale de la RDC ?</h1>
+                <div class="dark:bg-dark py-2 px-4 dark:text-gray-100 rounded-md md:w-200">
+                    <h4 class="font-bold flex justify-between items-center">
+                        Time left : <span class="bg-my-indigo px-4 rounded-md ml-2" id="timer_sec"> 89</span>
+                    </h4>
+                </div>
+                <div class="bg-my-indigo h-2 w-full absolute bottom-0 left-0 overflow-hidden" id="time_line"></div>
+            </section>
+
+            <div class="mt-4 grid md:grid-cols-2 grid-cols-1 md:gap-1" id="option_list">
+                <div class="option dark:bg-dark-secondary dark:text-gray-100">
+                    <span>Hyper Text Langage</span>
+                    <div class="icon tick"><i class="fa fa-check"></i></div>
+                </div>
+            </div>
+
+        </main>

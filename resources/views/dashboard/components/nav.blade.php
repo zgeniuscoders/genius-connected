@@ -1,4 +1,4 @@
-<nav class="bg-dark-secondary flex items-center justify-between container mx-auto">
+<nav class="dark:bg-dark-secondary/30 backdrop-blur-sm flex items-center justify-between container mx-auto">
     <ul class="flex items-center relative flex items-center">
 
         <li class="relative text-gray-200 after:content-[''] after:block after:absolute after:h-1 after:w-full after:bg-blue-200">
