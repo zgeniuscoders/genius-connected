@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ge connected | @yield("title")</title>
     @vite('resources/css/app.css')
-    <script src="{{ asset("js/swiper.js") }}" defer></script>
     @vite('resources/js/app.js')
 </head>
 <body class="dark:bg-dark bg-gray-100">

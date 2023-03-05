@@ -14,10 +14,10 @@
 <nav
     class="flex items-center justify-between mx-auto container px-4 mt-4 dark:text-gray-100 fixed top-0 left-0 right-0">
     <div class="flex items-center">
-        <img src="{{ asset("images/avatar.png") }}" alt="" class="w-12">
+        <img src="{{ asset("storage/avatars/$player->profile") }}" alt="" class="w-12 rounded-full object-cover">
         <div class="ml-2">
-            <p class="text-sm font-bold">zgenius gamer</p>
-            <p class="text-sm">300</p>
+            <p class="text-sm font-bold">{{ $player->username }}</p>
+            <p class="text-sm">{{ $player->bonus }}</p>
         </div>
     </div>
     <h3 class="text-xl font-bold uppercase" id="selectedGameName">Selected game info</h3>

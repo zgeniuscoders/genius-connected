@@ -17,6 +17,14 @@
         <h4 class="after:absolute after:block after:content-[''] after:w-full after:border-b after:my-2 mb-4">
             Menu</h4>
         <ul>
+            <li class="flex items-center md:hover:text-my-indigo mb-4 mt-4">
+                <i class="fa fa-home"></i>
+                <a href="" class="block w-full pl-4">Accueil</a>
+            </li>
+            <li class="flex items-center md:hover:text-my-indigo mb-4">
+                <i class="fa fa-store"></i>
+                <a href="" class="block w-full pl-4">Boutique</a>
+            </li>
             <li class="flex items-center md:hover:text-my-indigo mb-4">
                 <i class="fa fa-crown"></i>
                 <a href="" class="block w-full pl-4">Tournois</a>
@@ -47,6 +55,7 @@
     </div>
 
     <form action="{{ route("logout") }}" method="post" class="absolute mb-4 block" style="bottom: 0">
+        @csrf
         <button type="submit" class="flex items-center">
             <i class="fa fa-sign-out"></i>
             <span class="block w-full pl-4">Se deconnecter</span>
