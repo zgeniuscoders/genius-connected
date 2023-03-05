@@ -27,7 +27,7 @@
             </li>
             <li class="flex items-center md:hover:text-my-indigo mb-4">
                 <i class="fa fa-commenting"></i>
-                <a href="" class="block w-full pl-4">Messageries</a>
+                <a href="{{ route("chat.index") }}" class="block w-full pl-4">Messageries</a>
             </li>
             <li class="flex items-center md:hover:text-my-indigo mb-4">
                 <i class="fa fa-bell"></i>

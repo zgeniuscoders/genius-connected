@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::get('/', function () {
 });
 Route::get("dashboard",[DashboardController::class,'index'])->name("dashboard");
 Route::get("jeux",[GameController::class,'index'])->name("game.home");
+Route::resource("chat", ChatController::class);

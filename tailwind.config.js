@@ -29,6 +29,8 @@ module.exports = {
                 "400": "400px",
                 "100": "100px",
                 "200": "200px",
+                "60": "60px",
+                "percent-50": "50%",
             },
             borderColor: {
                 "dark": "#111827",
