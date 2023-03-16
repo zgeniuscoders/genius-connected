@@ -23,9 +23,12 @@ Route::get('/', function () {
 });
 
 Route::middleware("auth")->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.default');
+    });
     Route::resource("player", PlayerController::class);
     Route::middleware("isPlayer")->group(function () {
-        Route::get("dashboard", [DashboardController::class, 'index'])->name("dashboard");
+//        Route::get("dashboard", [DashboardController::class, 'index'])->name("dashboard");
         Route::get("jeux", [GameController::class, 'index'])->name("game.home");
         Route::get("jeux/multi-joueurs", [GameController::class, 'multiple'])->name("game.multiples_players");
         Route::get("jeux/multi-joueurs/play_now/{id}", [MultiplePlayerController::class, 'show'])->name("game.multiples_players.console");
