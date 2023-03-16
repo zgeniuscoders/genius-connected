@@ -1,6 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
-import home from "../components/dashboard/home.vue";
-import chat from "../components/dashboard/chat.vue";
+import home from "../pages/dashboard/home.vue";
+import chat from "../pages/dashboard/chat.vue";
+import gameHome from "../pages/game/home.vue";
+import gameMulti from "../pages/game/multiple/home.vue";
 
 const routes = [
     {
@@ -19,6 +21,22 @@ const routes = [
         },
         component: chat,
     },
+    {
+        path: "/game",
+        name: "game",
+        meta: {
+            title: "Jeux menu",
+        },
+        component: gameHome,
+    },
+    {
+        path: "/multi-players",
+        name: "game.mutli-players",
+        meta: {
+            title: "Jeux menu",
+        },
+        component: gameMulti,
+    },
 ];
 
 const router = createRouter({
@@ -26,15 +44,15 @@ const router = createRouter({
     routes,
 });
 
-// router.beforeResolve(to => {
-//     if(to.name){
-//         NProgress.start();
-//     }
-// })
+router.beforeResolve(to => {
+    if (to.name) {
+        NProgress.start();
+    }
+})
 
 router.afterEach((to) => {
     document.title = to.meta.title;
-    // NProgress.done();
+    NProgress.done();
 });
 
 export default router;

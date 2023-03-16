@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Games | @yield("title")</title>
-    @vite('resources/css/app.css')
-    <link rel="stylesheet" href="{{ asset("css/all.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/swiper.css") }}">
-    @vite('resources/js/app.js')
-</head>
-<body class="dark:bg-dark bg-gray-100 relative overflow-hidden bg-center bg-no-repeat"
-      style="background-image: url('{{ asset("images/cover.jpg") }}')">
-<nav
-    class="flex items-center justify-between mx-auto container px-4 mt-4 dark:text-gray-100 fixed top-0 left-0 right-0">
-    <div class="flex items-center">
-        <img src="{{ asset("storage/avatars/$player->profile") }}" alt="" class="w-12 rounded-full object-cover">
-        <div class="ml-2">
-            <p class="text-sm font-bold">{{ $player->username }}</p>
-            <p class="text-sm">{{ $player->bonus }}</p>
-        </div>
+<template>
+    <div class="dark:bg-dark bg-gray-100 relative overflow-hidden bg-center bg-no-repeat" id="cover_bg">
+        <nav
+            class="flex items-center justify-between mx-auto container px-4 mt-4 dark:text-gray-100 fixed top-0 left-0 right-0">
+            <div class="flex items-center">
+                <img :src="paths.avatar" alt="" class="w-12 rounded-full object-cover">
+                <div class="ml-2">
+                    <p class="text-sm font-bold">zgenius</p>
+                    <p class="text-sm">fff</p>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold uppercase" id="selectedGameName">{{ selectedGame }}</h3>
+            <button class="bg-my-indigo px-4 py-2 rounded-lg uppercase">dashboard</button>
+        </nav>
+        <slot/>
     </div>
-    <h3 class="text-xl font-bold uppercase" id="selectedGameName">Selected game info</h3>
-    <button class="bg-my-indigo px-4 py-2 rounded-lg uppercase">quitter</button>
-</nav>
+</template>
 
-{{--<img src="{{ asset("images/cover.jpg") }}" alt="" class="absolute bottom-0" style="opacity: 10;">--}}
-@yield("main")
-<script src="{{ asset("js/swiper.js") }}"></script>
-<script>
+<script setup>
+import {ref, onMounted, defineAsyncComponent} from "vue";
 
+import Swiper from 'swiper';
+import 'swiper/css';
+
+let selectedGame = ref("no game selected")
+const paths = ref({
+    publicPath: 'images/',
+    storagePath: 'storage/',
+    avatar: 'images/avatar.png',
+})
+
+onMounted(() => {
     let selectedGameBox = document.querySelectorAll("#selectedGame article")
-    let selectedGameName = document.querySelector("#selectedGameName")
 
     const nextBtn = document.querySelector(".swiper-button-next")
     const prevBtn = document.querySelector(".swiper-button-prev")
@@ -53,7 +53,7 @@
     }
 
     function selectedGameNameNav(element) {
-        selectedGameName.textContent = element
+        selectedGame.value = element
     }
 
     selectedGameNameNav(selectedGameBox[0].querySelector("h5").textContent)
@@ -89,9 +89,7 @@
         })
     })
 
-    new Swiper(".game-slider", {
-        spaceBetween: 300,
-        centeredSlides: true,
+    new Swiper(".swiper", {
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
@@ -101,8 +99,13 @@
             prevEl: ".swiper-button-prev",
         },
     })
+})
 
 </script>
-</body>
-</html>
+
+<style>
+#cover_bg {
+    background-image: url('images/cover.jpg');
+}
+</style>
 

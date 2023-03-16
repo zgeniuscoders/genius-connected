@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import NavLeft from "./navLeft.vue";
-import NavTop from "./navTop.vue";
+import NavLeft from "../components/navLeft.vue";
+import NavTop from "../components/navTop.vue";
 </script>
 

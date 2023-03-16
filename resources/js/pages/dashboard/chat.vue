@@ -138,6 +138,6 @@
 </template>
 
 <script setup>
-import Dashboard from "./dashboard.vue";
+import Dashboard from "../../layouts/dashboard.vue";
 </script>
 

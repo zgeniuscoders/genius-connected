@@ -6,10 +6,10 @@
             <h4 class="after:absolute after:block after:content-[''] after:border-b after:w-full after:my-2 mb-4">
                 Console</h4>
             <p class="w-full bg-dark-secondary/30 backdrop-blur-sm p-4 rounded mt-2 uppercase text-sm">
-                <a href="" class="flex items-center">
+                <router-link :to="{name: 'game'}" class="flex items-center">
                     <i class="fa fa-play"></i>
                     <span class="pl-4">commencer</span>
-                </a>
+                </router-link>
             </p>
         </div>
 
