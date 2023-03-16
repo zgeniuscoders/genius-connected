@@ -17,10 +17,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, defineAsyncComponent} from "vue";
-
-import Swiper from 'swiper';
-import 'swiper/css';
+import {ref, onMounted} from "vue";
 
 let selectedGame = ref("no game selected")
 const paths = ref({
@@ -89,21 +86,11 @@ onMounted(() => {
         })
     })
 
-    new Swiper(".swiper", {
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    })
 })
 
 </script>
 
-<style>
+<style scoped>
 #cover_bg {
     background-image: url('images/cover.jpg');
 }

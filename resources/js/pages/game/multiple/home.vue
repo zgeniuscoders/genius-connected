@@ -1,10 +1,13 @@
 <template>
     <layout>
         <div class="h-screen flex flex-col justify-center">
-            <main class="swiper-container game-slider">
-                <div class="swiper-wrapper" id="selectedGame">
-                    <div class="swiper-slide flex gap-4 items-center justify-center">
-                        <article class=" w-300 h-300 bg-dark-secondary relative border-4 border-my-indigo"
+            <main id="selectedGame">
+                <swiper
+                    :slides-per-view="2"
+                    :space-between="0"
+                    class="default-slider">
+                    <swiper-slide>
+                        <article class="w-300 h-300 bg-dark-secondary relative border-4 border-my-indigo"
                                  style="transform: skew(-8deg)">
                             <div class="absolute bottom-0 mb-4 mx-4 flex items-center">
                                 <button class="w-12 h-12 bg-dark-secondary rounded-full flex items-center justify-center">
@@ -13,20 +16,19 @@
                                 <h5 class="text-gray-100 font-bold text-lg ml-4 uppercase">Crée une partie</h5>
                             </div>
                         </article>
-                        <article class=" w-300 h-300 bg-dark-secondary relative" style="transform: skew(-8deg)">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <article class="w-300 h-300 bg-dark-secondary relative" style="transform: skew(-8deg)">
                             <div class="absolute bottom-0 mb-4 mx-4 flex items-center">
                                 <a class="w-12 h-12 bg-dark-secondary rounded-full flex items-center justify-center"
                                    href="">
-                                <i class="fa fa-play text-gray-100"></i>
+                                    <i class="fa fa-play text-gray-100"></i>
                                 </a>
                                 <h5 class="text-gray-100 font-bold text-lg ml-4 uppercase">Rejoindre une partie</h5>
                             </div>
                         </article>
-                    </div>
-                </div>
-                <button class="swiper-button-next"></button>
-                <button class="swiper-button-prev"></button>
-                <div class="swiper-pagination"></div>
+                    </swiper-slide>
+                </swiper>
             </main>
         </div>
     </layout>
@@ -34,4 +36,14 @@
 
 <script setup>
 import Layout from "../../../layouts/layout.vue";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import "swiper/swiper.min.css";
+
 </script>
+<style scoped>
+.default-slider .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
