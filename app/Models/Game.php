@@ -9,6 +9,8 @@ class Game extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function players(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Player::class);
