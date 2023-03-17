@@ -38,7 +38,7 @@ export function useGame() {
     }
     const getGames = async () => {
         await axios.get(`api/games`).then(res => {
-            games.value = res
+            games.value = res.data.data
         })
     }
 

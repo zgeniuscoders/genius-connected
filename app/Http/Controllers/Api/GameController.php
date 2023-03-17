@@ -13,7 +13,14 @@ class GameController extends Controller
 {
     public function index()
     {
-
+        $games = Game::where("is_private", false)
+            ->with("level")
+            ->with("category")
+            ->with("player")
+            ->get();
+        return response()->json([
+            "data" => $games
+        ]);
     }
 
     public function show($id): \Illuminate\Http\JsonResponse

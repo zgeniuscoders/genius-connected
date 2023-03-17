@@ -15,31 +15,52 @@
                     </div>
                 </div>
                 <main class="mx-4 dark:text-gray-100">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl">Listes des tournois</h3>
-                        <a href="" class="text-my-indigo">voir tout</a>
-                    </div>
-                    <section class="grid grid-cols-4 gap-2">
-                        <article class="relative">
-                            <!--                        <img src="{{ asset("images/food.jpg") }}" alt=""-->
-                            <!--                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">-->
-                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>
-                        </article>
-                        <article class="relative">
-                            <!--                        <img src="{{ asset("images/business.jpg") }}" alt=""-->
-                            <!--                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">-->
-                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>
-                        </article>
-                        <article class="relative">
-                            <!--                        <img src="{{ asset("images/education.jpg") }}" alt=""-->
-                            <!--                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">-->
-                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>
-                        </article>
-                        <article class="relative">
-                            <!--                        <img src="{{ asset("images/electronics.jpg") }}" alt=""-->
-                            <!--                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">-->
-                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>
-                        </article>
+<!--                    <div class="flex justify-between items-center mb-4">-->
+<!--                        <h3 class="text-xl">Listes des tournois</h3>-->
+<!--                        <a href="" class="text-my-indigo">voir tout</a>-->
+<!--                    </div>-->
+<!--                    <section class="grid grid-cols-4 gap-2">-->
+<!--                        <article class="relative">-->
+<!--                            &lt;!&ndash;                        <img src="{{ asset("images/food.jpg") }}" alt=""&ndash;&gt;-->
+<!--                            &lt;!&ndash;                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">&ndash;&gt;-->
+<!--                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>-->
+<!--                        </article>-->
+<!--                        <article class="relative">-->
+<!--                            &lt;!&ndash;                        <img src="{{ asset("images/business.jpg") }}" alt=""&ndash;&gt;-->
+<!--                            &lt;!&ndash;                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">&ndash;&gt;-->
+<!--                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>-->
+<!--                        </article>-->
+<!--                        <article class="relative">-->
+<!--                            &lt;!&ndash;                        <img src="{{ asset("images/education.jpg") }}" alt=""&ndash;&gt;-->
+<!--                            &lt;!&ndash;                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">&ndash;&gt;-->
+<!--                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>-->
+<!--                        </article>-->
+<!--                        <article class="relative">-->
+<!--                            &lt;!&ndash;                        <img src="{{ asset("images/electronics.jpg") }}" alt=""&ndash;&gt;-->
+<!--                            &lt;!&ndash;                        class="overflow-hidden rounded-lg relative h-full w-full object-cover">&ndash;&gt;-->
+<!--                            <h3 class="absolute bottom-0 mb-2 ml-4 text-md font-bold">Tournois libre</h3>-->
+<!--                        </article>-->
+<!--                    </section>-->
+                    <section class="my-4">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-lg">Jeux multijoueurs</h2>
+                            <router-link to="">voir tout</router-link>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-2 mt-2">
+                            <article class="bg-blue-800/30 backdrop-blur-sm p-4 rounded-lg" v-for="game in games"
+                                     :key="game.id">
+                                <h3 class="text-md font-bold">{{ game.name }}</h3>
+                                <h3>Crée par :
+                                    <router-link to="">{{ game.player.username }}</router-link>
+                                </h3>
+                                <h4>Niveau : {{ game.level.name }}</h4>
+                                <h4>Rubrique: {{ game.category.name }}</h4>
+                                <router-link to=""
+                                             class="text-gray-100 block mt-2 bg-dark-secondary text-center p-2 rounded-lg uppercase text-sm hover:bg-blue-800">
+                                    participer
+                                </router-link>
+                            </article>
+                        </div>
                     </section>
                 </main>
             </section>
@@ -50,9 +71,15 @@
     </dashboard>
 </template>
 
-<script>
+<script setup>
 import Dashboard from "../../layouts/dashboard.vue";
-export default {
-    components: {Dashboard}
-}
+import {useGame,usePlayer} from "../../services";
+import {onMounted} from "vue";
+
+const {getGames, games} = useGame()
+
+onMounted(() => {
+    getGames()
+})
+
 </script>

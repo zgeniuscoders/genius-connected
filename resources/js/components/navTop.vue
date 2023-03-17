@@ -5,13 +5,19 @@
         </form>
         <div class="text-gray-200 bg-dark/30 backdrop-blur-sm py-2 px-4 rounded-md ">
             <h3 class="flex items-center uppercase font-bold">
-                zgenius coders
+                {{ players.username }}
             </h3>
         </div>
     </nav>
 </template>
 
 <script setup>
+import {usePlayer} from "../services";
+import {onMounted} from "vue";
 
+const {getCurrentPlayer,players} = usePlayer()
+onMounted(() => {
+    getCurrentPlayer()
+})
 </script>
 

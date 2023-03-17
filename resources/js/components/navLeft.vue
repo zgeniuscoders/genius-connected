@@ -17,39 +17,62 @@
             <h4 class="after:absolute after:block after:content-[''] after:w-full after:border-b after:my-2 mb-4">
                 Menu</h4>
             <ul>
-                <li class="flex items-center md:hover:text-my-indigo mb-4 mt-4">
-                    <i class="fa fa-home"></i>
-                    <a href="" class="block w-full pl-4">Accueil</a>
+                <li>
+                    <router-link :to="{name: 'dashboard'}" class="flex items-center md:hover:text-my-indigo mb-4 mt-4">
+                        <i class="fa fa-home"></i>
+                        <span class="block w-full pl-4">Accueil</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-store"></i>
-                    <a href="" class="block w-full pl-4">Boutique</a>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4 mt-4">
+                        <i class="fa fa-store"></i>
+                        <span class="block w-full pl-4">Boutique</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-crown"></i>
-                    <a href="" class="block w-full pl-4">Tournois</a>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4 mt-4">
+                        <i class="fa fa-crown"></i>
+                        <span class="block w-full pl-4">Tournois</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-chart-bar"></i>
-                    <a href="" class="block w-full pl-4">Statistiques</a>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4">
+                        <i class="fa fa-gamepad"></i>
+                        <span class="block w-full pl-4">Mes jeux</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-commenting"></i>
-                    <router-link :to="{name: 'chat'}" class="block w-full pl-4">Messageries</router-link>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4">
+                        <i class="fa fa-chart-bar"></i>
+                        <span class="block w-full pl-4">Statistiques</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-bell"></i>
-                    <a href="" class="block w-full pl-4">Notifications</a>
-                    <span class="text-red-700 text-sm">90</span>
+                <li>
+                    <router-link :to="{name: 'chat'}" class="flex items-center md:hover:text-my-indigo mb-4">
+                        <i class="fa fa-commenting"></i>
+                        <span class="block w-full pl-4">Chats</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-book"></i>
-                    <a href="" class="block w-full pl-4">Recueils</a>
-                    <span class="text-red-700 text-sm">90</span>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4">
+                        <i class="fa fa-bell"></i>
+                        <span class="block w-full pl-4">Notifications</span>
+                        <span class="text-red-700 text-sm">90</span>
+                    </router-link>
                 </li>
-                <li class="flex items-center md:hover:text-my-indigo mb-4">
-                    <i class="fa fa-cog"></i>
-                    <a href="" class="block w-full pl-4">Parametres</a>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4">
+                        <i class="fa fa-book"></i>
+                        <span class="block w-full pl-4">Recueils</span>
+                        <span class="text-red-700 text-sm">90</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="" class="flex items-center md:hover:text-my-indigo mb-4">
+                        <i class="fa fa-cog"></i>
+                        <span class="block w-full pl-4">Parametres</span>
+                        <span class="text-red-700 text-sm">90</span>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -67,4 +90,9 @@
 <script setup>
 
 </script>
+<style scoped>
+.router-link-exact-active {
+    color: #6C63FF !important;
+}
 
+</style>
