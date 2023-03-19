@@ -171,7 +171,7 @@
             const options = option_list.querySelectorAll(".option");
 
             options.forEach((option) => {
-                option.setAttribute("onclick", "optionUserAnswer(this)");
+                option.setAttribute("onclick", "optionUserAnswer");
             });
         }
 

@@ -18,4 +18,5 @@ class GameController extends Controller
         $player = Player::where("user_id", auth()->user()->id)->firstOrFail();
         return view("game.multiple_players.multiple_players",compact("player"));
     }
+
 }

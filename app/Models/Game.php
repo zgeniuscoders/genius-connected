@@ -11,9 +11,9 @@ class Game extends Model
 
     protected $guarded = [];
 
-    public function players(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function players(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Player::class);
+        return $this->belongsToMany(Player::class)->withPivot("bonus");
     }
 
     public function player(): \Illuminate\Database\Eloquent\Relations\BelongsTo

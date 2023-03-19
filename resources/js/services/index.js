@@ -41,7 +41,11 @@ export function useGame() {
             games.value = res.data.data
         })
     }
-
+    const joinGame = async (id) => {
+        await axios.post(`api/games/join`, {
+            "id": id
+        })
+    }
     const createGame = async (data) => {
         return await axios.post(`api/games`, {
             'level': data.level,
@@ -53,12 +57,22 @@ export function useGame() {
             games.value = res.data.data
         })
     }
+    const sendResult = async (data) => {
+        return await axios.post(`api/games/send-result`, {
+            'gameId': data.gameId,
+            'bonus': data.bonus,
+        }).then(res => {
+            games.value = res.data.data
+        })
+    }
 
     return {
         games,
         getGame,
         getGames,
-        createGame
+        createGame,
+        joinGame,
+        sendResult
     }
 }
 

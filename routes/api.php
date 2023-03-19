@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware("auth:sanctum")->group(function () {
     Route::apiResource("games", GameController::class);
+    Route::post("games/join", [GameController::class, 'join']);
+    Route::post("games/send-result", [GameController::class, 'finish']);
+
     Route::apiResource("players", PlayerController::class);
     Route::apiResource("category", CategoryController::class);
     Route::apiResource("level", LevelController::class);

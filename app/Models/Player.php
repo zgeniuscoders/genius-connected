@@ -23,6 +23,6 @@ class Player extends Model
 
     public function game(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Game::class);
+        return $this->belongsToMany(Game::class)->withPivot("player_id");
     }
 }
