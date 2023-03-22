@@ -55,7 +55,7 @@
                                     </h3>
                                     <h4>Niveau : {{ game.level.name }}</h4>
                                     <h4>Rubrique: {{ game.category.name }}</h4>
-                                    <button type="button" @click="join_game(game.id)"
+                                    <button type="button" @click="join_game(game.link,game.id)"
                                             v-if="players.id !== game.player_id"
                                             class="text-gray-100 block mt-2 bg-dark-secondary text-center p-2 rounded-lg uppercase text-sm hover:bg-blue-800 w-full">
                                         participer
@@ -83,21 +83,27 @@
 
 import Dashboard from "../../layouts/dashboard.vue";
 import {useGame, usePlayer} from "../../services";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import {createToaster} from "@meforma/vue-toaster";
 
 const toaster = createToaster({})
-const {getGames, games, joinGame} = useGame()
+const {getGames, joinGame} = useGame()
 const {getCurrentPlayer, players} = usePlayer()
+const games = ref({})
 
 onMounted(() => {
-    getGames()
+    getGames().then(res => {
+        games.value = res.data.data
+    })
     getCurrentPlayer()
 })
 
-function join_game(id) {
-    joinGame(id)
-    toaster.success(`oky.........`)
+function join_game(slug, id) {
+    joinGame({slug, id}).then(res => {
+        if (res.status === 200) {
+            toaster.success(`oky.........`)
+        }
+    })
 }
 
 </script>

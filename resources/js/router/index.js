@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from "vue-router";
 import home from "../pages/dashboard/home.vue";
-import chat from "../pages/dashboard/chat.vue";
+import chat from "../pages/chat/chat.vue";
 import gameHome from "../pages/game/home.vue";
 import gameMulti from "../pages/game/multiple/home.vue";
 import gameConsole from "../pages/game/multiple/console.vue";
@@ -39,7 +39,7 @@ const routes = [
         component: gameMulti,
     },
     {
-        path: "/multi-players/:gameName/:id",
+        path: "/multi-players/:gameName-:id",
         name: "game.multi-players.play",
         meta: {
             title: "gameName",

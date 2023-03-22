@@ -10,9 +10,7 @@ export function usePlayer() {
         })
     }
     const getPlayers = async () => {
-        await axios.get(`/api/player`).then(res => {
-            players.value = res.data.data
-        })
+        return await axios.get(`/api/players`)
     }
     const getCurrentPlayer = async () => {
         await axios.get(`/api/player/current`).then(res => {
@@ -32,18 +30,16 @@ export function useGame() {
     let games = ref({})
 
     const getGame = async (id) => {
-        await axios.get(`/api/games/${id}`).then(res => {
-            games.value = res
-        })
+        return axios.get(`/api/games/${id}`)
     }
     const getGames = async () => {
-        await axios.get(`/api/games`).then(res => {
-            games.value = res.data.data
-        })
+        const res = axios.get(`/api/games`)
+        return res
     }
-    const joinGame = async (id) => {
-        await axios.post(`/api/games/join`, {
-            "id": id
+    const joinGame = async (data) => {
+        return await axios.post(`/api/games/join`, {
+            "id": data.id,
+            "slug": data.slug
         })
     }
     const createGame = async (data) => {
@@ -53,8 +49,6 @@ export function useGame() {
             'category': data.categories,
             'playerMax': data.playerMax,
             'isPrivate': data.isPrivate
-        }).then(res => {
-            games.value = res.data.data
         })
     }
     const sendResult = async (data) => {
@@ -132,4 +126,14 @@ export function useQuestion() {
         questions
     }
 
+}
+
+export function useChat() {
+    const getMessage = async (id) => {
+
+    }
+
+    const getMessages = async () => {
+
+    }
 }

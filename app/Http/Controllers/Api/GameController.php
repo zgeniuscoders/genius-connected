@@ -25,7 +25,9 @@ class GameController extends Controller
 
     public function show($id): \Illuminate\Http\JsonResponse
     {
-        $game = Game::where("id", $id)->firstOrFail();
+        $game = Game::find($id)
+            ->with("players")
+            ->get();
         return response()->json([
             "data" => $game
         ]);
@@ -63,6 +65,10 @@ class GameController extends Controller
         $player = Player::where("user_id", auth()->user()->id)->firstOrFail();
         $game = Game::find($request->id);
 
+        if ($game->link != $request->slug) {
+            abort(404);
+        }
+
         $player->game()->attach([
             $game->id => [
                 "is_admin" => false
@@ -82,12 +88,8 @@ class GameController extends Controller
             ]
         ]);
 
-        $games = Game::find($request->gameId)
-            ->with("players")
-            ->get();
-
         return response()->json([
-            "data" => $games
+            "data" => "success"
         ]);
     }
 

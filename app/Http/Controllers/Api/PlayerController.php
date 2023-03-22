@@ -10,10 +10,11 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
+        $players = Player::all();
         return response()->json([
-            "data" => "Home"
+            "data" => $players
         ]);
     }
 

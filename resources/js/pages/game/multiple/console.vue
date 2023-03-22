@@ -1,5 +1,5 @@
 <template>
-    <result-multi-game @close="closeResult" v-if="resultBox" :game="games"/>
+    <result-multi-game @close="closeResult" v-if="resultBox" :id="routeParams.id"/>
     <div
         class="bg-blue-700 backdrop-blur-lg bg-gradient-to-bl from-dark-secondary via-my-indigo to-dark h-200 relative rounded-b-full w-full top-0">
         <h3 class="text-gray-100 text-md rounded-md flex items-center gap-2 justify-center pt-4">
@@ -14,7 +14,9 @@
                 <div class="bg-my-indigo py-2 px-4 rounded-full absolute flex items-center"
                      style="top: -20px;left: 50%;transform: translateX(-50%)">
                     Question
-                    <!--                    <span id="total_que" class="flex items-center mx-2">{{ options.index + 1 }} / {{ questions.value.length }}</span>-->
+                    <span id="total_que" class="flex items-center mx-2">{{
+                            options.index + 1
+                        }} / {{ questions.length }}</span>
                 </div>
                 <h3 class="text-lg my-4" id="que_text">{{ questions[options.index].question }}</h3>
                 <div class="bg-my-indigo h-2 w-full absolute bottom-0 left-0 rounded-md" id="time_line"
@@ -32,7 +34,7 @@
             <!--                        bottom-->
             <div class="w-full flex items-center justify-center mt-4">
                 <button class="bg-my-indigo py-2 px-4 text-gray-100 rounded-full" id="btn_next_question"
-                        @click="nextQuestion" >suivant
+                        @click="nextQuestion" v-if="options.nextBtn">suivant
                 </button>
             </div>
         </section>
@@ -63,7 +65,7 @@ const questions = ref([])
 const isMounted = ref(false)
 const routeParams = ref({})
 
-const {sendResult, games, getGame} = useGame()
+const {sendResult} = useGame()
 // const {getQuestions, questions} = useQuestion()
 
 onMounted(() => {
@@ -169,7 +171,6 @@ function nextQuestion() {
     } else {
         resultBox.value = true
         finish()
-        // showResultBox();
     }
 }
 
@@ -177,7 +178,6 @@ function finish() {
     let id = routeParams.value.id
     let score = options.value.userScore
     sendResult({id, score})
-    console.log(games.value)
 }
 
 function closeResult() {

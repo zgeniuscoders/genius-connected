@@ -1,5 +1,5 @@
 <template>
-    <section class="wrapper dark:bg-dark bg-gray-100 z-20 rounded-md border border-my-indigo">
+    <section class="wrapper dark:bg-dark bg-gray-100 z-20 rounded-md border border-my-indigo" v-if="isMounted">
         <div class="flex items-center justify-between mx-6 my-2">
             <h3 class="text-2xl dark:text-gray-100 uppercase text-center mt-2 font-bold">Resultat</h3>
             <button type="submit" class="dark:text-gray-100" @click="$emit('close')"><i class="fa fa-times"></i>
@@ -25,7 +25,6 @@
                     <td data-label="Points">{{ player.pivot.bonus }}</td>
                     <td data-label="Moyenne">15</td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
@@ -33,9 +32,20 @@
 </template>
 
 <script setup>
-import {defineProps} from "vue";
+import {defineProps, onMounted, ref} from "vue";
+import {useGame} from "../services";
 
-defineProps({game: Object})
+const props = defineProps({id: String})
+const isMounted = ref(false)
+const game = ref({})
+const {getGame} = useGame()
+
+onMounted(() => {
+    getGame(props.id).then((res) => {
+        game.value = res.data.data
+        isMounted.value = true
+    })
+})
 
 </script>
 

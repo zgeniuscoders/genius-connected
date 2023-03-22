@@ -1,5 +1,6 @@
 <template>
-    <create-multi-game v-on:close="gamePopup" v-if="popup"/>
+    <create-multi-game v-on:close="gamePopup" v-if="popup.create"/>
+    <join-game v-if="popup.join" v-on:close="joinPopup"/>
     <layout>
         <div class="h-screen flex flex-col justify-center">
             <main id="selectedGame">
@@ -23,10 +24,11 @@
                     <swiper-slide>
                         <article class="w-300 h-300 bg-dark-secondary relative" style="transform: skew(-8deg)">
                             <div class="absolute bottom-0 mb-4 mx-4 flex items-center">
-                                <a class="w-12 h-12 bg-dark-secondary rounded-full flex items-center justify-center"
-                                   href="">
+                                <button
+                                    @click="joinPopup"
+                                    class="w-12 h-12 bg-dark-secondary rounded-full flex items-center justify-center">
                                     <i class="fa fa-play text-gray-100"></i>
-                                </a>
+                                </button>
                                 <h5 class="text-gray-100 font-bold text-lg ml-4 uppercase">Rejoindre une partie</h5>
                             </div>
                         </article>
@@ -46,17 +48,24 @@ import {onMounted, ref} from "vue"
 import {Swiper, SwiperSlide} from "swiper/vue";
 import "swiper/swiper.min.css";
 import CreateMultiGame from "../../../components/createMultiGame.vue";
+import JoinGame from "../../../components/joinGame.vue";
 
-let popup = ref(false)
+let popup = ref({
+    "create": false,
+    "join": false
+})
 const {getCurrentPlayer, players} = usePlayer()
 onMounted(() => {
     getCurrentPlayer()
 })
 
 function gamePopup() {
-    popup.value = !popup.value
+    popup.value.create = !popup.value.create
 }
 
+function joinPopup() {
+    popup.value.join = !popup.value.join
+}
 </script>
 <style scoped>
 .default-slider .swiper-slide {
