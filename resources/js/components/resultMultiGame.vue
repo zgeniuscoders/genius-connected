@@ -17,14 +17,15 @@
                 </tr>
                 </thead>
                 <tbody class="text-center ">
-                <tr>
-                    <td data-label="#">1</td>
+                <tr v-for="player in game[0].players" :key="player.id">
+                    <td data-label="#">{{ player.id }}</td>
                     <td data-label="Joueur">
-                        <router-link to="">zgenius codeurs</router-link>
+                        <router-link to="">{{ player.username }}</router-link>
                     </td>
-                    <td data-label="Points">15</td>
+                    <td data-label="Points">{{ player.pivot.bonus }}</td>
                     <td data-label="Moyenne">15</td>
                 </tr>
+
                 </tbody>
             </table>
         </div>
@@ -34,7 +35,8 @@
 <script setup>
 import {defineProps} from "vue";
 
-defineProps(["game"])
+defineProps({game: Object})
+
 </script>
 
 <style scoped>

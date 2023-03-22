@@ -1,4 +1,4 @@
-import {ref} from "vue";
+import {ref, reactive} from "vue";
 import axios from "axios"
 
 export function usePlayer() {
@@ -32,17 +32,17 @@ export function useGame() {
     let games = ref({})
 
     const getGame = async (id) => {
-        await axios.get(`api/games/${id}`).then(res => {
+        await axios.get(`/api/games/${id}`).then(res => {
             games.value = res
         })
     }
     const getGames = async () => {
-        await axios.get(`api/games`).then(res => {
+        await axios.get(`/api/games`).then(res => {
             games.value = res.data.data
         })
     }
     const joinGame = async (id) => {
-        await axios.post(`api/games/join`, {
+        await axios.post(`/api/games/join`, {
             "id": id
         })
     }
@@ -58,9 +58,9 @@ export function useGame() {
         })
     }
     const sendResult = async (data) => {
-        return await axios.post(`api/games/send-result`, {
-            'gameId': data.gameId,
-            'bonus': data.bonus,
+        return await axios.post(`/api/games/send-result`, {
+            'gameId': data.id,
+            'bonus': data.score,
         }).then(res => {
             games.value = res.data.data
         })
@@ -78,19 +78,16 @@ export function useGame() {
 
 export function useCategory() {
     let categories = ref({})
-
     const getCategory = (id) => {
         axios.get(`api/category/${id}`).then(res => {
             categories.value = res.data.data
         })
     }
-
     const getCategories = () => {
         axios.get(`api/category`).then(res => {
             categories.value = res.data.data
         })
     }
-
     return {
         getCategories,
         getCategory,
@@ -118,4 +115,21 @@ export function useLevel() {
         getLevel,
         levels
     }
+}
+
+export function useQuestion() {
+
+    let questions = reactive([])
+
+    const getQuestions = async () => {
+        await axios.get(`/api/questions`).then(res => {
+            questions.value = res.data.data
+        })
+    }
+
+    return {
+        getQuestions,
+        questions
+    }
+
 }

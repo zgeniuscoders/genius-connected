@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Game extends Model
 {
@@ -11,7 +12,7 @@ class Game extends Model
 
     protected $guarded = [];
 
-    public function players(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function players(): BelongsToMany
     {
         return $this->belongsToMany(Player::class)->withPivot("bonus");
     }

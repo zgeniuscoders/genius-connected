@@ -70,7 +70,7 @@ class GameController extends Controller
         ]);
     }
 
-    public function finish(Request $request)
+    public function finish(Request $request): \Illuminate\Http\JsonResponse
     {
         $user_id = auth()->user()->id;
         $game = Game::find($request->gameId);
