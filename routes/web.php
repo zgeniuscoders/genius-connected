@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ChatController;
+use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MultiplePlayerController;
@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+//Route::get("chat",[ChatController::class,'index']);
 
 Route::middleware("auth")->group(function () {
     Route::resource("player", PlayerController::class);

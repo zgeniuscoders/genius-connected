@@ -5,6 +5,7 @@ import gameHome from "../pages/game/home.vue";
 import gameMulti from "../pages/game/multiple/home.vue";
 import gameConsole from "../pages/game/multiple/console.vue";
 
+
 const routes = [
     {
         path: "/dashboard",
@@ -17,6 +18,14 @@ const routes = [
     {
         path: "/chat",
         name: "chat",
+        meta: {
+            title: "Messageries",
+        },
+        component: chat,
+    },
+    {
+        path: "/chat/:id",
+        name: "chat.show",
         meta: {
             title: "Messageries",
         },

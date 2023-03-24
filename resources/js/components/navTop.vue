@@ -5,7 +5,7 @@
         </form>
         <div class="text-gray-200 bg-dark/30 backdrop-blur-sm py-2 px-4 rounded-md ">
             <h3 class="flex items-center uppercase font-bold">
-                {{ players.username }}
+                {{ player.username }}
             </h3>
         </div>
     </nav>
@@ -13,11 +13,16 @@
 
 <script setup>
 import {usePlayer} from "../services";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 
-const {getCurrentPlayer,players} = usePlayer()
+const player = ref({})
+const {getCurrentPlayer} = usePlayer()
 onMounted(() => {
-    getCurrentPlayer()
+    getCurrentPlayer().then(res => {
+        if (res.status === 200) {
+            player.value = res.data.data
+        }
+    })
 })
 </script>
 

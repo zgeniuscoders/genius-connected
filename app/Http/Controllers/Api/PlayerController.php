@@ -12,7 +12,8 @@ class PlayerController extends Controller
 {
     public function index(): JsonResponse
     {
-        $players = Player::all();
+        $id = auth()->user()->id;
+        $players = Player::where("user_id", "!=", $id)->get();
         return response()->json([
             "data" => $players
         ]);
@@ -29,7 +30,7 @@ class PlayerController extends Controller
 
     public function show($id): JsonResponse
     {
-        $player = Player::where("user_id", $id)->firstOrFail();
+        $player = Player::find($id);
         return response()->json([
             "data" => $player
         ]);

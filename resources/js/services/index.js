@@ -2,24 +2,18 @@ import {ref, reactive} from "vue";
 import axios from "axios"
 
 export function usePlayer() {
-    let players = ref({})
 
     const getPlayer = async (id) => {
-        await axios.get(`/api/player/${id}`).then(res => {
-            players.value = res.data.data
-        })
+        return await axios.get(`/api/players/${id}`)
     }
     const getPlayers = async () => {
         return await axios.get(`/api/players`)
     }
     const getCurrentPlayer = async () => {
-        await axios.get(`/api/player/current`).then(res => {
-            players.value = res.data.data
-        })
+        return await axios.get(`/api/player/current`)
     }
 
     return {
-        players,
         getPlayers,
         getCurrentPlayer,
         getPlayer
@@ -129,11 +123,29 @@ export function useQuestion() {
 }
 
 export function useChat() {
-    const getMessage = async (id) => {
 
+    const sendMessage = async (data) => {
+        return await axios.post("/api/chat", {
+            "message": data.message,
+            "receiverId": data.receiverId
+        })
+    }
+
+    const deleteMessage = async () => {
+        return await axios.delete("/api/chat/delete")
+    }
+
+    const getMessage = async (id) => {
+        return await axios.get(`/api/chat/${id}`)
     }
 
     const getMessages = async () => {
+        return await axios.get(`/api/chat`)
+    }
 
+    return {
+        sendMessage,
+        getMessages,
+        getMessage
     }
 }

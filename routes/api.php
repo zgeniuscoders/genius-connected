@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\GameController;
 use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\PlayerController;
 use App\Http\Controllers\Api\QuestionController;
+use App\Http\Controllers\Api\ChatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the api middleware group. Make something great!
 |
 */
+
 Route::middleware("auth:sanctum")->group(function () {
     Route::apiResource("games", GameController::class);
     Route::post("games/join", [GameController::class, 'join']);
@@ -28,6 +30,7 @@ Route::middleware("auth:sanctum")->group(function () {
     Route::apiResource("players", PlayerController::class);
     Route::apiResource("category", CategoryController::class);
     Route::apiResource("level", LevelController::class);
+    Route::apiResource("chat", ChatController::class);
     Route::get("player/current", [PlayerController::class, 'getCurrent']);
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
