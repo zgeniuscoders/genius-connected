@@ -32,6 +32,7 @@ Route::middleware("auth:sanctum")->group(function () {
     Route::apiResource("level", LevelController::class);
     Route::apiResource("chat", ChatController::class);
     Route::get("player/current", [PlayerController::class, 'getCurrent']);
+    Route::get("player/get-player-games", [PlayerController::class, 'getGames']);
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -25,10 +25,14 @@ module.exports = {
                 "dark-secondary": "#222B3A",
                 "my-indigo": "#6C63FF"
             },
+            fontSize:{
+                "10xl": "10rem"
+            },
             spacing: {
                 "300": "300px",
                 "600": "600px",
                 "400": "400px",
+                "500": "500px",
                 "100": "100px",
                 "200": "200px",
                 "60": "60px",

@@ -9,7 +9,7 @@
     <link rel='stylesheet' href='{{ asset("css/nprogess.css") }}'/>
     @vite('resources/js/app.js')
 </head>
-<body class="dark:bg-dark bg-gray-100 overflow-hidden" id="app">
+<body class="dark:bg-dark  bg-gray-200 overflow-hidden " id="app">
 <router-view/>
 <script src="{{ asset("js/nprogress.js") }}"></script>
 </body>

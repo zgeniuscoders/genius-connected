@@ -1,11 +1,11 @@
 <template>
-    <div class="bg-dark text-gray-100 px-4 py-4 h-full fixed w-300 border-r border-dark-secondary">
+    <div class="dark:bg-dark bg-gray-100 dark:text-gray-100 px-4 py-4 h-full fixed w-300 border-r">
         <h3 class="text-xl font-bold text-my-indigo">GENIUS CONNECTED</h3>
 
         <div class="pt-4 relative">
-            <h4 class="after:absolute after:block after:content-[''] after:border-b after:w-full after:my-2 mb-4">
+            <h4 class="after:absolute after:block after:content-[''] after:border-b after:w-full after:my-2 mb-4 font-bold">
                 Console</h4>
-            <p class="w-full bg-dark-secondary/30 backdrop-blur-sm p-4 rounded mt-2 uppercase text-sm">
+            <p class="w-full dark:bg-dark-secondary/30 dark:backdrop-blur-sm bg-gray-200 p-4 rounded mt-2 uppercase text-sm">
                 <router-link :to="{name: 'game'}" class="flex items-center">
                     <i class="fa fa-play"></i>
                     <span class="pl-4">commencer</span>
@@ -80,7 +80,7 @@
         <form action="" method="post" class="absolute mb-4 block" style="bottom: 0">
             <button type="submit" class="flex items-center">
                 <i class="fa fa-sign-out"></i>
-                <span class="block w-full pl-4">Se deconnecter</span>
+                <span class="block w-full pl-4 font-bold">Se deconnecter</span>
             </button>
         </form>
     </div>

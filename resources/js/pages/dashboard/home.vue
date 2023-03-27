@@ -72,7 +72,7 @@
                     </section>
                 </main>
             </section>
-            <div class="bg-dark border-l h-screen w-300 border-dark-secondary fixed right-0">
+            <div class="dark:bg-dark bg-gray-100 border-l h-screen w-300 dark:border-dark-secondary fixed right-0">
 
             </div>
         </div>

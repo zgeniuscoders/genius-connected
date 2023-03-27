@@ -25,4 +25,9 @@ class Player extends Model
     {
         return $this->belongsToMany(Game::class)->withPivot("player_id");
     }
+
+    public function games(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Game::class)->with("level")->with("category");
+    }
 }

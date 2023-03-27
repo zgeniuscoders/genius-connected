@@ -3,6 +3,7 @@ import home from "../pages/dashboard/home.vue";
 import chat from "../pages/chat/chat.vue";
 import gameHome from "../pages/game/home.vue";
 import gameMulti from "../pages/game/multiple/home.vue";
+import gameMultiSettings from "../pages/game/multiple/settings.vue";
 import gameConsole from "../pages/game/multiple/console.vue";
 
 
@@ -46,6 +47,14 @@ const routes = [
             title: "Jeux menu",
         },
         component: gameMulti,
+    },
+    {
+        path: "/multi-players/settings",
+        name: "game.mutli-players.settings",
+        meta: {
+            title: "Mes jeux",
+        },
+        component: gameMultiSettings,
     },
     {
         path: "/multi-players/:gameName-:id",

@@ -1,5 +1,5 @@
 <template>
-    <aside class="border-l border-dark-secondary px-2 h-90vh overflow-auto">
+    <aside class="px-2 h-90vh overflow-auto bg-gray-100 bg-dark">
         <form action="" class="w-full mb-2 pt-2">
             <label>
                 <input type="search" name="q" placeholder="Recherche..."
@@ -10,7 +10,7 @@
 
         <!--                show all user-->
         <router-link :to="{name: 'chat.show',params: {id: player.id}}" @click="$emit('routerLoad',player.id)"
-                     class="flex items-center text-gray-100 bg-dark-secondary rounded-md p-2 mb-2"
+                     class="flex items-center dark:text-gray-100 dark:bg-dark-secondary bg-gray-100 rounded-md p-2 mb-2"
                      v-for="player in players" :key="player.id">
             <div class="flex items-center w-full">
                 <img :src="`${storagePath}/${player.profile}`" alt="username"
@@ -20,7 +20,7 @@
                     <p class="font-bold text-sm">Lorem ipsum dolor sit...</p>
                 </div>
             </div>
-            <p class="flex-end text-red-500">20</p>
+            <p class="flex-end text-red-500 mr-2">20</p>
         </router-link>
     </aside>
 </template>

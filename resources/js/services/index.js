@@ -6,6 +6,11 @@ export function usePlayer() {
     const getPlayer = async (id) => {
         return await axios.get(`/api/players/${id}`)
     }
+
+    const getPlayerGames = async () => {
+        return await axios.get(`/api/player/get-player-games`)
+    }
+
     const getPlayers = async () => {
         return await axios.get(`/api/players`)
     }
@@ -16,7 +21,8 @@ export function usePlayer() {
     return {
         getPlayers,
         getCurrentPlayer,
-        getPlayer
+        getPlayer,
+        getPlayerGames
     }
 }
 

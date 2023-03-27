@@ -40,4 +40,13 @@ class PlayerController extends Controller
     {
 
     }
+
+    public function getGames(): JsonResponse
+    {
+        $authId = auth()->user()->id;
+        $games = Player::where("user_id", $authId)->with("games")->first();
+        return response()->json([
+            "data" => $games
+        ]);
+    }
 }

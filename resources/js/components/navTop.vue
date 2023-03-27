@@ -1,9 +1,10 @@
 <template>
-    <nav class="bg-dark-secondary/30 backdrop-blur-sm flex items-center justify-between container mx-auto px-4 py-2">
+    <nav
+        class="dark:bg-dark-secondary/30 dark:backdrop-blur-sm bg-gray-100 flex items-center justify-between container mx-auto px-4 py-2 border-b">
         <form action="">
             <input type="search" name="q" id="q" class="p-2 w-400 rounded-md outline-none" placeholder="Recherche...">
         </form>
-        <div class="text-gray-200 bg-dark/30 backdrop-blur-sm py-2 px-4 rounded-md ">
+        <div class="dark:text-gray-200 dark:bg-dark/30 dark:backdrop-blur-sm bg-gray-200 py-2 px-4 rounded-md ">
             <h3 class="flex items-center uppercase font-bold">
                 {{ player.username }}
             </h3>
